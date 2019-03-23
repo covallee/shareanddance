@@ -1,8 +1,16 @@
+const dotenv = require('dotenv').config();
+
+// if (process.env.ENVIRONMENT !== 'production') {
+//   dotenv.config();
+// }
+
+const { SPACE_ID, ACCESS_TOKEN } = process.env;
+
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    title: `Share the Music and Dance`,
+    description: `All the music in my life`,
+    author: `@shareanddance`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -27,6 +35,14 @@ module.exports = {
         icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
       },
     },
+    {
+      resolve: `gatsby-source-contentful`,
+      options: {
+        spaceId: process.env.SPACE_ID,
+        accessToken: process.env.ACCESS_TOKEN
+      }
+    },
+    `gatsby-plugin-styled-components`,
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // 'gatsby-plugin-offline',
