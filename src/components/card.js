@@ -1,5 +1,4 @@
 import React, {Component} from "react"
-import { StaticQuery, graphql } from "gatsby"
 import styled from "styled-components"
 import {format} from "date-fns"
 

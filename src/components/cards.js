@@ -10,7 +10,6 @@ const ALL_BLOG_POST = graphql`
         node{
           contentful_id
           title
-          date
           createdAt
           link
           tag
