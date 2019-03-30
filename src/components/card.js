@@ -49,11 +49,12 @@ class Card extends Component {
       <CardStyles>
         {item.cover ? <img src={item.cover.file.url} alt="" /> : '' }
         <div className="content">
-          <h2>{item.title}</h2>
+          <h2>{item.title} - {item.artist}</h2>
           <ListTags>
             <Tag>{item.tag}</Tag>
           </ListTags>
           <a href={item.link}>Listen on spotify</a>
+          <iframe src={item.link} width="300" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
           <div className="date">{format(item.createdAt, 'MMMM d, YYYY h:mm a' )}</div>
         </div>
       </CardStyles>

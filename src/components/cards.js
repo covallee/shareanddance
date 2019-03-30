@@ -5,11 +5,12 @@ import Card from "./card";
 
 const ALL_BLOG_POST = graphql`
   query BlogPost {
-    allContentfulBlogPost{
+    allContentfulBlogPost(sort: { fields: [createdAt], order: DESC }){
       edges{
         node{
           contentful_id
           title
+          artist
           createdAt
           link
           tag
