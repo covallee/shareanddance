@@ -27,9 +27,13 @@ const ALL_BLOG_POST = graphql`
 
 const BlogCards = styled.div`
   display: grid;
-  grid-template-columns: repeat(1, 1fr);
+  grid-template-columns: 300px;
   grid-gap: 20px;
   margin: 0 auto;
+  justify-content: center;
+  @media (min-width: 700px) {
+    grid-template-columns: 1fr;
+  }
 `;
 
 

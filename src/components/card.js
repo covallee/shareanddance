@@ -4,7 +4,11 @@ import {format} from "date-fns"
 
 const CardStyles = styled.div`
   border: 2px solid #F8B9BF;
-  display: flex;
+  display: grid;
+  grid-template-columns: 300px;
+  @media (min-width: 700px) {
+    grid-template-columns: 300px 1fr;
+  }
   img {
     width: 300px;
     height: 300px;
@@ -14,6 +18,9 @@ const CardStyles = styled.div`
   a {
     display: block;
     margin-bottom: 1rem;
+    flex-grow: 2
+  }
+  .embed {
     flex-grow: 2
   }
   h2 {
@@ -45,6 +52,8 @@ const ListTags = styled.div`
 class Card extends Component {
   render() {
     const { item } = this.props
+    const id = item.link.split('track/');
+    const embedLink = `https://open.spotify.com/embed/track/${id[1]}`
     return (
       <CardStyles>
         {item.cover ? <img src={item.cover.file.url} alt="" /> : '' }
@@ -53,8 +62,10 @@ class Card extends Component {
           <ListTags>
             <Tag>{item.tag}</Tag>
           </ListTags>
-          <a href={item.link}>Listen on spotify</a>
-          <iframe src={item.link} width="300" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+          {/* <a href={item.link}>Listen on spotify</a> */}
+          <div className="embed">
+            <iframe src={embedLink} width="100%" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+          </div>
           <div className="date">{format(item.createdAt, 'MMMM d, YYYY h:mm a' )}</div>
         </div>
       </CardStyles>

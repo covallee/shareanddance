@@ -9,8 +9,10 @@ import Cards from "../components/cards"
 const IndexPage = () => (
   <Layout>
     <SEO title="Home" keywords={[`music`,`gatsby`, `application`, `react`]} />
-    <h1>Hi people</h1>
-    <p>Just some music that I like</p>
+    <h1 
+      style={{
+        fontSize: `1rem`
+      }}>Just some tracks that I like</h1>
     {/* <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
       <Image />
     </div> */}

@@ -21,11 +21,20 @@ const SocialLinks = styled.div`
   }
 `;
 
+const Title = styled.h1`
+  margin: 0;
+  font-size: 1.5rem;
+  @media (min-width: 700px) {
+    font-size: 2.25rem;
+  }
+`;
+
 const Header = ({ siteTitle }) => (
   <header
     style={{
-      background: `#71CACD`,
+      background: `linear-gradient(180deg, #72CBCF 0%, rgba(165, 222, 225, 0.635359) 65.75%, rgba(255, 255, 255, 0) 100%), #FCF2E1`,
       marginBottom: `1.45rem`,
+      height: `120px`,
     }}
   >
     <div
@@ -37,7 +46,7 @@ const Header = ({ siteTitle }) => (
         justifyContent: `space-between`
       }}
     >
-      <h1 style={{ margin: 0 }}>
+      <Title>
         <Link
           to="/"
           style={{
@@ -47,7 +56,7 @@ const Header = ({ siteTitle }) => (
         >
           {siteTitle}
         </Link>
-      </h1>
+      </Title>
       <SocialLinks>
         <a href="https://open.spotify.com/user/hokiefr?si=aj0hXQiWRP6Ql8nie0p5PQ">
           <Spotify />
