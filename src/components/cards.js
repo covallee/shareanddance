@@ -14,6 +14,9 @@ const ALL_BLOG_POST = graphql`
           createdAt
           link
           tag
+          note {
+            note
+          }
           cover {
             file{
               url

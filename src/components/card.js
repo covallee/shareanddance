@@ -63,6 +63,7 @@ class Card extends Component {
             <Tag>{item.tag}</Tag>
           </ListTags>
           {/* <a href={item.link}>Listen on spotify</a> */}
+          {item.note ? <p>{item.note.note}</p> : ''}
           <div className="embed">
             <iframe src={embedLink} width="100%" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
           </div>
