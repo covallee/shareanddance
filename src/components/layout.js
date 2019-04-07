@@ -48,6 +48,7 @@ const Layout = ({ children }) => (
             © {new Date().getFullYear()}, Built with 💜, 
             {` `}
             <a href="https://www.gatsbyjs.org">Gatsby</a>
+            , {` `} <a href="https://www.netlify.com/">Netlify</a>
             , and {` `}
             <a href="https://www.contentful.com">Contentful</a>
           </div>
