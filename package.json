@@ -5,28 +5,28 @@
   "version": "0.1.0",
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
-    "babel-plugin-styled-components": "^1.10.0",
+    "babel-plugin-styled-components": "^1.10.6",
     "date-fns": "^1.30.1",
     "dotenv": "^7.0.0",
-    "gatsby": "^2.1.37",
-    "gatsby-image": "^2.0.34",
-    "gatsby-plugin-manifest": "^2.0.24",
-    "gatsby-plugin-offline": "^2.0.25",
-    "gatsby-plugin-react-helmet": "^3.0.10",
+    "gatsby": "^2.13.25",
+    "gatsby-image": "^2.2.6",
+    "gatsby-plugin-manifest": "^2.2.3",
+    "gatsby-plugin-offline": "^2.2.4",
+    "gatsby-plugin-react-helmet": "^3.1.2",
     "gatsby-plugin-react-svg": "^2.1.1",
-    "gatsby-plugin-sharp": "^2.0.29",
-    "gatsby-plugin-styled-components": "^3.0.7",
-    "gatsby-source-contentful": "^2.0.41",
-    "gatsby-source-filesystem": "^2.0.27",
-    "gatsby-transformer-sharp": "^2.1.17",
+    "gatsby-plugin-sharp": "^2.2.7",
+    "gatsby-plugin-styled-components": "^3.1.2",
+    "gatsby-source-contentful": "^2.1.13",
+    "gatsby-source-filesystem": "^2.1.5",
+    "gatsby-transformer-sharp": "^2.2.3",
     "prop-types": "^15.7.2",
-    "react": "^16.8.4",
-    "react-dom": "^16.8.4",
-    "react-helmet": "^5.2.0",
-    "styled-components": "^4.1.3"
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-helmet": "^5.2.1",
+    "styled-components": "^4.3.2"
   },
   "devDependencies": {
-    "prettier": "^1.16.4"
+    "prettier": "^1.18.2"
   },
   "keywords": [
     "gatsby"
