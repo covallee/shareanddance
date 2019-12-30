@@ -53,7 +53,8 @@ class Card extends Component {
   render() {
     const { item } = this.props
     const id = item.link.split('track/');
-    const embedLink = `https://open.spotify.com/embed/track/${id[1]}`
+    // const embedLink = `https://open.spotify.com/embed/track/${id[1]}`
+    const embedLink = item.link
     return (
       <CardStyles>
         {item.cover ? <img src={item.cover.file.url} alt="" /> : '' }
