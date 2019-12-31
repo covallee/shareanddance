@@ -14,6 +14,7 @@ const ALL_BLOG_POST = graphql`
           createdAt
           link
           tag
+          playlist
           note {
             note
           }
@@ -38,7 +39,6 @@ const BlogCards = styled.div`
     grid-template-columns: 1fr;
   }
 `;
-
 
 class Cards extends Component {
   render() {

@@ -52,9 +52,8 @@ const ListTags = styled.div`
 class Card extends Component {
   render() {
     const { item } = this.props
-    const id = item.link.split('track/');
-    // const embedLink = `https://open.spotify.com/embed/track/${id[1]}`
-    const embedLink = item.link
+    const id = item.link.split(item.playlist ? 'playlist/' : 'track/');
+    const embedLink = item.playlist ? `https://open.spotify.com/embed/playlist/${id[1]}` : `https://open.spotify.com/embed/track/${id[1]}`
     return (
       <CardStyles>
         {item.cover ? <img src={item.cover.file.url} alt="" /> : '' }
