@@ -65,7 +65,7 @@ class Card extends Component {
           {/* <a href={item.link}>Listen on spotify</a> */}
           {item.note ? <p>{item.note.note}</p> : ''}
           <div className="embed">
-            <iframe src={embedLink} width="100%" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+            <iframe title={item.title} src={embedLink} width="100%" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
           </div>
           <div className="date">{format(item.createdAt, 'MMMM D, YYYY h:mm a' )}</div>
         </div>
