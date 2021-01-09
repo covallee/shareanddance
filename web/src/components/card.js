@@ -52,22 +52,24 @@ const ListTags = styled.div`
 class Card extends Component {
   render() {
     const { item } = this.props
-    const id = item.link.split(item.playlist ? 'playlist/' : 'track/');
-    const embedLink = item.playlist ? `https://open.spotify.com/embed/playlist/${id[1]}` : `https://open.spotify.com/embed/track/${id[1]}`
+    // const id = item.link.split(item.playlist ? 'playlist/' : 'track/');
+    const id = item.link.split('track/');
+    // const embedLink = item.playlist ? `https://open.spotify.com/embed/playlist/${id[1]}` : `https://open.spotify.com/embed/track/${id[1]}`
+    const embedLink = `https://open.spotify.com/embed/track/${id[1]}`
     return (
       <CardStyles>
-        {item.cover ? <img src={item.cover.file.url} alt="" /> : '' }
+        {item.poster ? <img src={item.poster.asset.url} alt="" /> : '' }
         <div className="content">
           <h2>{item.title} - {item.artist}</h2>
           <ListTags>
-            <Tag>{item.tag}</Tag>
+            {item.tag.map(tag => <Tag>{tag.title}</Tag>)}
           </ListTags>
           {/* <a href={item.link}>Listen on spotify</a> */}
           {item.note ? <p>{item.note.note}</p> : ''}
           <div className="embed">
             <iframe title={item.title} src={embedLink} width="100%" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
           </div>
-          <div className="date">{format(item.createdAt, 'MMMM D, YYYY h:mm a' )}</div>
+          <div className="date">{format(item.publishDate, 'MMMM D, YYYY' )}</div>
         </div>
       </CardStyles>
     )

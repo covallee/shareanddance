@@ -50,7 +50,7 @@ const Layout = ({ children }) => (
             <a href="https://www.gatsbyjs.org">Gatsby</a>
             , {` `} <a href="https://www.netlify.com/">Netlify</a>
             , and {` `}
-            <a href="https://www.contentful.com">Contentful</a>
+            <a href="https://www.sanity.io">Sanity</a>
           </div>
         </footer>
       </>

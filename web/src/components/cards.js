@@ -5,29 +5,52 @@ import Card from "./card";
 
 const ALL_BLOG_POST = graphql`
   query BlogPost {
-    allContentfulBlogPost(sort: { fields: [createdAt], order: DESC }){
-      edges{
-        node{
-          contentful_id
+    allSanitySong(sort: {fields: publishDate, order: DESC}) {
+    edges {
+      node {
+        title
+        _createdAt(formatString: "DD.MM.YYYY")
+        artist
+        link
+        publishDate
+        tag {
           title
-          artist
-          createdAt
-          link
-          tag
-          playlist
-          note {
-            note
-          }
-          cover {
-            file{
-              url
-            }
+        }
+        poster {
+          asset {
+            url
           }
         }
       }
     }
   }
+  }
 `;
+// const ALL_BLOG_POST = graphql`
+//   query BlogPost {
+//     allContentfulBlogPost(sort: { fields: [createdAt], order: DESC }){
+//       edges{
+//         node{
+//           contentful_id
+//           title
+//           artist
+//           createdAt
+//           link
+//           tag
+//           playlist
+//           note {
+//             note
+//           }
+//           cover {
+//             file{
+//               url
+//             }
+//           }
+//         }
+//       }
+//     }
+//   }
+// `;
 
 const BlogCards = styled.div`
   display: grid;
@@ -47,7 +70,7 @@ class Cards extends Component {
         query={ALL_BLOG_POST}
         render={(data) => (
           <BlogCards>
-            {data.allContentfulBlogPost.edges.map(edge => 
+            {data.allSanitySong.edges.map(edge => 
               <Card item={edge.node} key={edge.node.contentful_id}></Card>
             )}
           </BlogCards>

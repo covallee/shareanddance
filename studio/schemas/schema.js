@@ -7,11 +7,17 @@ import schemaTypes from "all:part:@sanity/base/schema-type";
 // We import object and document schemas
 import blockContent from "./blockContent";
 import siteSettings from "./siteSettings";
+import song from "./documents/song";
+import track from "./documents/track";
 
 // Object
 import bioPortableText from "./objects/bioPortableText";
 import openGraph from "./objects/openGraph";
 import mainImage from "./objects/mainImage";
+import tag from "./objects/tag";
+import platformTrackData from "./objects/platformTrackData";
+import platformData from "./objects/platformData";
+import album from "./objects/album";
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -21,11 +27,16 @@ export default createSchema({
   // to the ones provided by any plugins that are installed
   types: schemaTypes.concat([
     /* Your types here! */
+    song,
+    track,
     blockContent,
     bioPortableText,
-    category,
     siteSettings,
     openGraph,
     mainImage,
+    tag,
+    platformTrackData,
+    platformData,
+    album,
   ]),
 });
