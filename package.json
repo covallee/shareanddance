@@ -4,7 +4,9 @@
   "version": "1.0.0",
   "scripts": {
     "build": "lerna run build --parallel",
-    "dev": "lerna run dev --parallel"
+    "dev": "lerna run dev --parallel",
+    "build-studio": "lerna bootstrap && cd studio && npm run build",
+    "build-web": "lerna bootstrap && (cd web && npm run build)"
   },
   "devDependencies": {
     "@sanity/cli": "2.0.9",
