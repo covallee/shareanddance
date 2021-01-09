@@ -19,8 +19,8 @@ export default {
       type: "string",
       title: "Alternative text",
       description: "Important for accessibility",
-      validation: (Rule) =>
-        Rule.error("You have to fill out the alt text").required(),
+      // validation: (Rule) =>
+      //   Rule.error("You have to fill out the alt text").required(),
       options: {
         isHighlighted: true,
       },
