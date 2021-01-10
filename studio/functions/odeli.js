@@ -19,7 +19,7 @@ function transformPlatformData(odesliData){
 
   return platforms.reduce((platformData, platform) => {
     const odesliLinksByPlatform = odesliData.linksByPlatform[platform];
-
+   
     if(!odesliLinksByPlatform) {
       return platformdata
     }
