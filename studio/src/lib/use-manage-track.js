@@ -3,7 +3,7 @@ import { merge } from 'lodash'
 import { useDocumentOperation } from '@sanity/react-hooks'
 import client from 'part:@sanity/base/client'
 
-const ODESLI_API_URL = 'https://api.song.link/v1-alpha.1'
+// const ODESLI_API_URL = 'https://api.song.link/v1-alpha.1'
 // import {
 //   Track,
 //   Artist,
@@ -76,20 +76,20 @@ export default function useManageTrack(trackDocumentId) {
 }
 
 async function fetchPlatformUrls(appleMusicId) {
-  // const params = new URLSearchParams({ id: appleMusicId })
-  // const response = await fetch(`/functions/odesli/?${params}`)
-  const params = new URLSearchParams({
-    platform: 'appleMusic',
-    id: appleMusicId,
-    type: 'song',
-  })
+  const params = new URLSearchParams({ id: appleMusicId })
+  const response = await fetch(`/.netlify/functions/odesli/?${params}`)
+  // const params = new URLSearchParams({
+  //   platform: 'appleMusic',
+  //   id: appleMusicId,
+  //   type: 'song',
+  // })
 
-  const odesliData = await fetch(`${ODESLI_API_URL}/links?${params}`)
-  .then(response => response.json())
-  .then(data => transformPlatformData(data));
+  // const odesliData = await fetch(`${ODESLI_API_URL}/links?${params}`)
+  // .then(response => response.json())
+  // .then(data => transformPlatformData(data));
 
-  // return response.json()
-  return odesliData;
+  return response.json()
+  // return odesliData;
 }
 
 async function maybeCreateTrack(track, trackDocumentId) {
@@ -109,32 +109,6 @@ function createTrack(track) {
   })
 }
 
-function transformPlatformData(odesliData){
-  const platforms = ['appleMusic', 'spotify', 'youtube']
-  return platforms.reduce((platformData, platform) => {
-    const odesliLinksByPlatform = odesliData.linksByPlatform[platform];
-    
-    if(!odesliLinksByPlatform) {
-      return platformdata
-    }
-
-    return {
-      ...platformData,
-      [platform]: {
-        platform,
-        id: getOdesliPlatformId(odesliLinksByPlatform.entityUniqueId),
-        url: odesliLinksByPlatform.url,
-      },
-
-    }
-  },
-  {}
-  )
-}
-
-function getOdesliPlatformId(odesliEntityUniqueId) {
-  return odesliEntityUniqueId.split('::')[1]
-}
 
 // TODO: Return type.
 // function createArtist(artist) {

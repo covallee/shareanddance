@@ -2,16 +2,21 @@ import got from 'got'
 
 const ODESLI_API_URL = 'https://api.song.link/v1-alpha.1'
 
-export default async function (req, res) {
+exports.handler = async function (event, context) {
   const params = new URLSearchParams({
     platform: 'appleMusic',
-    id: req.query.id,
+    id: event.queryStringParameters.id,
     type: 'song',
   })
 
   const odesliData = await got.get(`${ODESLI_API_URL}/links?${params}`).json()
 
-  res.json(transformPlatformData(odesliData))
+  const res = transformPlatformData(odesliData);
+  return {
+    statusCode: 200,
+    body: res.json()
+  };
+  // res.json(transformPlatformData(odesliData))
 }
 
 function transformPlatformData(odesliData){
@@ -33,7 +38,8 @@ function transformPlatformData(odesliData){
       },
 
     }
-  }
+  },
+  {}
   )
 }
 
