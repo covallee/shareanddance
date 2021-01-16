@@ -63,7 +63,7 @@ export default function useManageTrack(trackDocumentId) {
           //   _ref: artist._id,
           //   _key: artist._id,
           // })),
-          dataByPlatform: merge(dataByPlatform, track.dataByPlatform),
+          dataByPlatform: merge(dataByPlatform.data, track.dataByPlatform),
         },
       },
     ])
