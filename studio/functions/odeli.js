@@ -1,4 +1,5 @@
-import got from 'got'
+// import got from 'got'
+const got = require('got');
 
 const ODESLI_API_URL = 'https://api.song.link/v1-alpha.1'
 
