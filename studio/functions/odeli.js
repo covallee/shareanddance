@@ -12,10 +12,12 @@ exports.handler = async function (event, context) {
 
   const odesliData = await got.get(`${ODESLI_API_URL}/links?${params}`).json()
 
-  const res = transformPlatformData(odesliData);
+  const response = transformPlatformData(odesliData);
   return {
     statusCode: 200,
-    body: res.json()
+    body: JSON.stringify({
+      data: response
+    })
   };
   // res.json(transformPlatformData(odesliData))
 }
