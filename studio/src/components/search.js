@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Spinner, Card, Text, Inline, studioTheme, ThemeProvider } from '@sanity/ui'
 import FormField from 'part:@sanity/components/formfields/default'
 import SearchableSelect from 'part:@sanity/components/selects/searchable'
-// import { useDebounce } from 'use-debounce'
+import { useDebounce } from 'use-debounce'
 import useSearch from '../lib/use-search'
 import useManageTrack from '../lib/use-manage-track'
 import styles from './search.css'
@@ -13,8 +13,8 @@ const Search = ({ trackDocumentId }) => {
     trackDocumentId,
   )
   const [searchTerm, setSearchTerm] = useState('')
-  // const [debouncedSearchTerm] = useDebounce(searchTerm, 250)
-  const { previousResults, results } = useSearch(searchTerm)
+  const [debouncedSearchTerm] = useDebounce(searchTerm, 250)
+  const { previousResults, results } = useSearch(debouncedSearchTerm)
 
   return (
     <ThemeProvider theme={studioTheme}>
@@ -23,8 +23,7 @@ const Search = ({ trackDocumentId }) => {
         <SearchableSelect
           placeholder='Artist, track, or album'
           items={
-            // results.isValidating && debouncedSearchTerm.length !== 0
-            results.isValidating
+            results.isValidating && debouncedSearchTerm.length !== 0
               ? previousResults.current
               : results.data
           }

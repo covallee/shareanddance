@@ -13,17 +13,29 @@ export default {
       name: 'artist',
       type: 'string',
     },
-    // {
-    //   title: 'Artists',
-    //   name: 'artists',
-    //   type: 'array',
-    //   of: [
-    //     {
-    //       type: 'reference',
-    //       to: [{ type: 'artist' }],
-    //     },
-    //   ],
-    // },
+    {
+      name: "comment",
+      title: "Comment",
+      type: "blockContent",
+    },
+    {
+      name: "tag",
+      type: "array",
+      title: "Tag",
+      of: [
+        {
+          type: "reference",
+          to: {
+            type: "tag",
+          },
+        },
+      ],
+    },
+    {
+      name: 'publishedAt',
+      type: 'datetime',
+      title: 'Published at',
+    },
     {
       title: 'Album',
       name: 'album',
@@ -42,22 +54,35 @@ export default {
     {
       title: 'Data by platform',
       name: 'dataByPlatform',
-      type: 'object',
-      fields: [
+      type: 'dataByPlatform',
+    },
+  ],
+  orderings: [
+    {
+      name: 'publishingDateAsc',
+      title: 'Publishing date new–>old',
+      by: [
         {
-          title: 'Apple Music',
-          name: 'appleMusic',
-          type: 'platformTrackData',
+          field: 'publishedAt',
+          direction: 'asc',
         },
         {
-          title: 'Spotify',
-          name: 'spotify',
-          type: 'platformTrackData',
+          field: 'name',
+          direction: 'asc',
+        },
+      ],
+    },
+    {
+      name: 'publishingDateDesc',
+      title: 'Publishing date old->new',
+      by: [
+        {
+          field: 'publishedAt',
+          direction: 'desc',
         },
         {
-          title: 'YouTube',
-          name: 'youtube',
-          type: 'platformTrackData',
+          field: 'name',
+          direction: 'asc',
         },
       ],
     },
@@ -65,8 +90,8 @@ export default {
   preview: {
     select: {
       title: 'name',
-      // subtitle: 'artists.0.name',
       subtitle: 'artist',
+      publishedAt: 'publishedAt',
       media: 'album.image',
     },
   },

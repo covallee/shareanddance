@@ -9,6 +9,7 @@ import blockContent from "./blockContent";
 import siteSettings from "./siteSettings";
 import song from "./documents/song";
 import track from "./documents/track";
+import playlist from "./documents/playlist";
 
 // Object
 import bioPortableText from "./objects/bioPortableText";
@@ -17,6 +18,7 @@ import mainImage from "./objects/mainImage";
 import tag from "./objects/tag";
 import platformTrackData from "./objects/platformTrackData";
 import platformData from "./objects/platformData";
+import dataByPlatform from "./objects/dataByPlatform";
 import album from "./objects/album";
 
 // Then we give our schema to the builder and provide the result to Sanity
@@ -29,6 +31,7 @@ export default createSchema({
     /* Your types here! */
     song,
     track,
+    playlist,
     blockContent,
     bioPortableText,
     siteSettings,
@@ -37,6 +40,7 @@ export default createSchema({
     tag,
     platformTrackData,
     platformData,
+    dataByPlatform,
     album,
   ]),
 });

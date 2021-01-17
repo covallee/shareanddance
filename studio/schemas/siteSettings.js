@@ -9,12 +9,6 @@ export default {
       type: "string",
       title: "Title",
     },
-    // {
-    //   title: "Main artist",
-    //   name: "mainArtist",
-    //   type: "reference",
-    //   to: [{ type: "artist" }],
-    // },
     {
       title: "Open graph",
       name: "openGraph",

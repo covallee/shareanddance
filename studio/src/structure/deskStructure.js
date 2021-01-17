@@ -1,5 +1,6 @@
 import S from "@sanity/desk-tool/structure-builder";
 import { MdSettings } from "react-icons/md";
+import { IoMdMusicalNotes } from "react-icons/io";
 import React from 'react'
 import { Box } from '@sanity/ui'
 import Search from '../components/search'
@@ -28,40 +29,23 @@ export default () =>
             .documentId("siteSettings")
             .views([S.view.form()])
         ),
-      // artwork,
-      // S.documentTypeListItem("project").title("Project"),
-      // S.documentTypeListItem("track").title("Tracks"),
       S.listItem()
         .title("Tracks")
+        .icon(IoMdMusicalNotes)
         .child(
-          S.list()
-            .title('Song List')
-            .items([
-              S.listItem()
-                .title('Songs')
+          S.documentTypeList('track')
+          .title('Tracks')
+            .child(
+              S.document()
                 .schemaType('track')
-                .child(
-                  S.documentTypeList('track')
-                  .title('Song')
-                    .child(
-                      S.document()
-                        .schemaType('track')
-                        .views([
-                          S.view.form(),
-                          S.view.component(SearchView).title('Search')
-                        ])
-                    )
-                )
-            ])
-            // .child(id =>
-            //   S.document()
-            //     .schemaType('song')
-            //     .params({id})
-            //     .views([
-            //       S.view.form()
-            //     ])
-            // )
+                .views([
+                  S.view.form(),
+                  S.view.component(SearchView).title('Search')
+                ])
+            )
         ),
+      S.documentTypeListItem("playlist").title("Playlists"),
+      S.documentTypeListItem("tag").title("Tags"),
       S.listItem()
         .title("Songs")
         .child(

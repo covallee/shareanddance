@@ -78,18 +78,8 @@ export default function useManageTrack(trackDocumentId) {
 async function fetchPlatformUrls(appleMusicId) {
   const params = new URLSearchParams({ id: appleMusicId })
   const response = await fetch(`/.netlify/functions/odesli/?${params}`)
-  // const params = new URLSearchParams({
-  //   platform: 'appleMusic',
-  //   id: appleMusicId,
-  //   type: 'song',
-  // })
-
-  // const odesliData = await fetch(`${ODESLI_API_URL}/links?${params}`)
-  // .then(response => response.json())
-  // .then(data => transformPlatformData(data));
-
+ 
   return response.json()
-  // return odesliData;
 }
 
 async function maybeCreateTrack(track, trackDocumentId) {
