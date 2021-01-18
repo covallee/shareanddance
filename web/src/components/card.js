@@ -70,7 +70,7 @@ class Card extends Component {
           <div className="embed">
             <iframe title={item.name} src={embedLink} width="100%" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
           </div>
-          <div className="date">{format(item._createdAt, 'MMMM D, YYYY' )}</div>
+          <div className="date">{format(item.publishedAt, 'MMMM D, YYYY' )}</div>
         </div>
       </CardStyles>
     )

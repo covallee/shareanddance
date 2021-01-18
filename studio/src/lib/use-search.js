@@ -17,21 +17,9 @@ export default function useSearch(term) {
 
     const response = await fetch(`${ITUNES_SEARCH_API_URL}?${params}`)
     const data = await response.json()
-    // console.log({result});
+    
     const transformedData = data.results.map(result => ({
       name: result.trackName,
-      // artists: [
-      //   {
-      //     name: result.artistName,
-      //     dataByPlatform: {
-      //       appleMusic: {
-      //         platform: 'appleMusic',
-      //         id: result.artistId.toString(),
-      //         url: result.artistViewUrl,
-      //       },
-      //     },
-      //   },
-      // ],
       artist: result.artistName,
       album: {
         name: result.collectionName,
@@ -39,12 +27,6 @@ export default function useSearch(term) {
           .split('/')
           .slice(0, -2)
           .join('/'),
-        // dataByPlatform: {
-        //   appleMusic: {
-        //     platform: 'appleMusic',
-        //     id: result.collectionId.toString(),
-        //   },
-        // },
       },
       duration: result.trackTimeMillis,
       explicit: result.trackExplicitness === 'explicit',

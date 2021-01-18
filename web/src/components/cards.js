@@ -5,7 +5,7 @@ import Card from "./card";
 
 const ALL_BLOG_POST = graphql`
   query BlogPost {
-    allSanityTrack(sort: {fields: _createdAt, order: DESC}) {
+    allSanityTrack(sort: {fields: publishedAt, order: DESC}) {
       edges {
         node {
           _id
