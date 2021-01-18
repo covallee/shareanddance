@@ -1,6 +1,7 @@
 import React, {Component} from "react"
 import styled from "styled-components"
 import {format} from "date-fns"
+import BasePortableText from "@sanity/block-content-to-react"
 
 const CardStyles = styled.div`
   border: 2px solid #F8B9BF;
@@ -52,22 +53,24 @@ const ListTags = styled.div`
 class Card extends Component {
   render() {
     const { item } = this.props
-    const id = item.link.split(item.playlist ? 'playlist/' : 'track/');
-    const embedLink = item.playlist ? `https://open.spotify.com/embed/playlist/${id[1]}` : `https://open.spotify.com/embed/track/${id[1]}`
+    // const id = item.link.split(item.playlist ? 'playlist/' : 'track/');
+    const id = item.dataByPlatform.spotify ? item.dataByPlatform.spotify.id : null;
+    // const embedLink = item.playlist ? `https://open.spotify.com/embed/playlist/${id[1]}` : `https://open.spotify.com/embed/track/${id[1]}`
+    const embedLink = id ? `https://open.spotify.com/embed/track/${id}` : 'http://'
     return (
       <CardStyles>
-        {item.cover ? <img src={item.cover.file.url} alt="" /> : '' }
+        {item.album ? <img src={item.album.image.asset.url} alt="" /> : '' }
         <div className="content">
-          <h2>{item.title} - {item.artist}</h2>
+          <h2>{item.name} - {item.artist}</h2>
           <ListTags>
-            <Tag>{item.tag}</Tag>
+            {item.tag.map(tag => <Tag>{tag.title}</Tag>)}
           </ListTags>
-          {/* <a href={item.link}>Listen on spotify</a> */}
-          {item.note ? <p>{item.note.note}</p> : ''}
+          {/* {item.comment ? <p>{item.comment[0].children[0].text}</p> : ''} */}
+          {item._rawComment ? <BasePortableText blocks={item._rawComment}/> : ''}
           <div className="embed">
-            <iframe title={item.title} src={embedLink} width="100%" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+            <iframe title={item.name} src={embedLink} width="100%" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
           </div>
-          <div className="date">{format(item.createdAt, 'MMMM D, YYYY h:mm a' )}</div>
+          <div className="date">{format(item._createdAt, 'MMMM D, YYYY' )}</div>
         </div>
       </CardStyles>
     )
