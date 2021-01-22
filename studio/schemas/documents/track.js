@@ -95,4 +95,7 @@ export default {
       media: 'album.image',
     },
   },
+  initialValue: () => ({
+    publishedAt: (new Date()).toISOString()
+  })
 }
