@@ -46,37 +46,8 @@ export default () =>
         ),
       S.documentTypeListItem("playlist").title("Playlists"),
       S.documentTypeListItem("tag").title("Tags"),
-      S.listItem()
-        .title("Songs")
-        .child(
-          S.list()
-            .title('Song List')
-            .items([
-              S.listItem()
-                .title('Songs')
-                .schemaType('song')
-                .child(
-                  S.documentTypeList('song')
-                  .title('Song')
-                    .child(
-                      S.document()
-                        .schemaType('song')
-                        .views([
-                          S.view.form(),
-                          S.view.component(JsonPreview).title('JSON'),
-                          S.view.component(SearchView).title('Search')
-                        ])
-                    )
-                )
-            ])
-            // .child(id =>
-            //   S.document()
-            //     .schemaType('song')
-            //     .params({id})
-            //     .views([
-            //       S.view.form()
-            //     ])
-            // )
-        ),
-      // ...S.documentTypeListItems().filter(listItem => !['siteSettings'].includes(listItem.getId()))
+      // S.divider(),
+      // ...S.documentTypeListItems().filter(
+      //   item => item.getId() !== 'siteSettings'
+      // ) 
     ]);

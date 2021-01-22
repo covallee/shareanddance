@@ -7,7 +7,6 @@ import schemaTypes from "all:part:@sanity/base/schema-type";
 // We import object and document schemas
 import blockContent from "./blockContent";
 import siteSettings from "./siteSettings";
-import song from "./documents/song";
 import track from "./documents/track";
 import playlist from "./documents/playlist";
 
@@ -29,7 +28,6 @@ export default createSchema({
   // to the ones provided by any plugins that are installed
   types: schemaTypes.concat([
     /* Your types here! */
-    song,
     track,
     playlist,
     blockContent,
