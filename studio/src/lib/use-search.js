@@ -10,14 +10,14 @@ export default function useSearch(term) {
 
   const results = useSwr(term.length > 3 ? term : null, async term => {
     const params = new URLSearchParams({
-      country: 'GB',
+      country: 'CA',
       entity: 'song',
       term,
     })
 
     const response = await fetch(`${ITUNES_SEARCH_API_URL}?${params}`)
     const data = await response.json()
-    
+
     const transformedData = data.results.map(result => ({
       name: result.trackName,
       artist: result.artistName,
