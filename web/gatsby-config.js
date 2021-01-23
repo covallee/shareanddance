@@ -38,13 +38,6 @@ module.exports = {
         icon: `src/images/share-favicon.png`, // This path is relative to the root of the site.
       },
     },
-    // {
-    //   resolve: `gatsby-source-contentful`,
-    //   options: {
-    //     spaceId: process.env.SPACE_ID,
-    //     accessToken: process.env.ACCESS_TOKEN
-    //   }
-    // },
     {
       resolve: `gatsby-source-sanity`,
       options: {
@@ -63,19 +56,5 @@ module.exports = {
         }
       }
     },
-    // {
-    //   resolve: `gatsby-source-spotify`,
-    //   options: {
-    //     clientId: process.env.SPOTIFY_CLIENT_ID,
-    //     clientSecret: process.env.SPOTIFY_CLIENT_SECRET,
-    //     refreshToken: process.env.SPOTIFY_REFRESH_TOKEN,
-    //     fetchPlaylists: true, // optional. Set to false to disable fetching of your playlists
-    //     fetchRecent: false, // optional. Set to false to disable fetching of your recently played tracks
-    //     playlistId: '4o4BSoom5FW0kfJ1A8gGXM'
-    //   },
-    // },
-    // this (optional) plugin enables Progressive Web App + Offline functionality
-    // To learn more, visit: https://gatsby.dev/offline
-    // 'gatsby-plugin-offline',
   ],
 }
