@@ -16,7 +16,9 @@ const ALL_BLOG_POST = graphql`
           album {
             image {
               asset {
-                url
+                fixed(width: 300) {
+                  ...GatsbySanityImageFixed
+                }
               }
             }
           }
@@ -37,7 +39,6 @@ const ALL_BLOG_POST = graphql`
 
 const BlogCards = styled.div`
   display: grid;
-  grid-template-columns: 300px;
   grid-gap: 20px;
   margin: 0 auto;
   justify-content: center;

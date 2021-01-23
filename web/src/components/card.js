@@ -1,4 +1,5 @@
 import React, {Component} from "react"
+import Img from "gatsby-image"
 import styled from "styled-components"
 import {format} from "date-fns"
 import BasePortableText from "@sanity/block-content-to-react"
@@ -7,9 +8,11 @@ const CardStyles = styled.div`
   border: 2px solid #F8B9BF;
   display: grid;
   grid-template-columns: 300px;
+
   @media (min-width: 700px) {
     grid-template-columns: 300px 1fr;
   }
+
   img {
     width: 300px;
     height: 300px;
@@ -60,7 +63,7 @@ class Card extends Component {
     const embedLink = id ? `https://open.spotify.com/embed/track/${id}` : 'http://'
     return (
       <CardStyles>
-        {item.album ? <img src={item.album.image.asset.url} alt="" /> : '' }
+        {item.album ? <Img fixed={item.album.image.asset.fixed} /> : '' }
         <div className="content">
           <h2>{item.name} - {item.artist}</h2>
           <ListTags>
