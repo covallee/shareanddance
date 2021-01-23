@@ -71,7 +71,9 @@ class Card extends Component {
           </ListTags>
           {item._rawComment ? <BasePortableText blocks={item._rawComment}/> : ''}
           <div className="embed">
-            <iframe title={item.name} src={embedLink} width="100%" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+            <iframe title={item.name} src={embedLink} width="100%" height="80" frameborder="0" allowtransparency="true"
+            loading="lazy"
+            allow="encrypted-media"></iframe>
           </div>
           <div className="date">{format(item.publishedAt, 'MMMM D, YYYY' )}</div>
         </div>
