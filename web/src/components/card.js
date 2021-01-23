@@ -40,9 +40,10 @@ const CardStyles = styled.div`
 const Tag = styled.span`
   display: inline;
   border: 1px solid white;
+  font-weight: 400;
   border-radius: 5px;
-  background-color: #F096A7;
-  color: white;
+  background-color: #F294A6;
+  color: #262226;
   padding: 5px 10px;
 `;
 
@@ -65,7 +66,6 @@ class Card extends Component {
           <ListTags>
             {item.tag.map(tag => <Tag>{tag.title}</Tag>)}
           </ListTags>
-          {/* {item.comment ? <p>{item.comment[0].children[0].text}</p> : ''} */}
           {item._rawComment ? <BasePortableText blocks={item._rawComment}/> : ''}
           <div className="embed">
             <iframe title={item.name} src={embedLink} width="100%" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>

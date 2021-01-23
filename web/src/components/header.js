@@ -58,10 +58,10 @@ const Header = ({ siteTitle }) => (
         </Link>
       </Title>
       <SocialLinks>
-        <a href="https://open.spotify.com/user/hokiefr?si=aj0hXQiWRP6Ql8nie0p5PQ">
+        <a href="https://open.spotify.com/user/hokiefr?si=aj0hXQiWRP6Ql8nie0p5PQ" title="Spotify profile">
           <Spotify />
         </a>
-        <a href="https://twitter.com/ShareandDance">
+        <a href="https://twitter.com/ShareandDance" title="Twitter profile">
           <Twitter />
         </a>
       </SocialLinks>
