@@ -60,20 +60,21 @@ class Card extends Component {
     // const id = item.link.split(item.playlist ? 'playlist/' : 'track/');
     const id = item.dataByPlatform.spotify ? item.dataByPlatform.spotify.id : null;
     // const embedLink = item.playlist ? `https://open.spotify.com/embed/playlist/${id[1]}` : `https://open.spotify.com/embed/track/${id[1]}`
-    const embedLink = id ? `https://open.spotify.com/embed/track/${id}` : 'http://'
+    const embedLink = id ? `https://open.spotify.com/embed/track/${id}` : null
     return (
       <CardStyles>
-        {item.album ? <Img fixed={item.album.image.asset.fixed} /> : '' }
+        {item.album && <Img fixed={item.album.image.asset.fixed} />}
         <div className="content">
           <h2>{item.name} - {item.artist}</h2>
           <ListTags>
             {item.tag.map(tag => <Tag>{tag.title}</Tag>)}
           </ListTags>
-          {item._rawComment ? <BasePortableText blocks={item._rawComment}/> : ''}
+          {item._rawComment && <BasePortableText blocks={item._rawComment}/>}
           <div className="embed">
+            {embedLink && 
             <iframe title={item.name} src={embedLink} width="100%" height="80" frameborder="0" allowtransparency="true"
             loading="lazy"
-            allow="encrypted-media"></iframe>
+            allow="encrypted-media"></iframe>}
           </div>
           <div className="date">{format(item.publishedAt, 'MMMM D, YYYY' )}</div>
         </div>
