@@ -16,9 +16,7 @@ const ALL_BLOG_POST = graphql`
           album {
             image {
               asset {
-                fixed(width: 300) {
-                  ...GatsbySanityImageFixed
-                }
+                gatsbyImageData(width: 300)
               }
             }
           }
