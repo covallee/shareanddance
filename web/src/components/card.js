@@ -1,7 +1,7 @@
 import React, {Component} from "react"
-import Img from "gatsby-image"
+import { GatsbyImage } from "gatsby-plugin-image"
 import styled from "styled-components"
-import {format} from "date-fns"
+import format from "date-fns/format"
 import BasePortableText from "@sanity/block-content-to-react"
 
 const CardStyles = styled.div`
@@ -63,7 +63,7 @@ class Card extends Component {
     const embedLink = id ? `https://open.spotify.com/embed/track/${id}` : null
     return (
       <CardStyles>
-        {item.album && <Img fixed={item.album.image.asset.fixed} />}
+        {item.album && <GatsbyImage image={item.album.image.asset.gatsbyImageData} />}
         <div className="content">
           <h2>{item.name} - {item.artist}</h2>
           <ListTags>
@@ -76,7 +76,7 @@ class Card extends Component {
             loading="lazy"
             allow="encrypted-media"></iframe>}
           </div>
-          <div className="date">{format(item.publishedAt, 'MMMM D, YYYY' )}</div>
+          <div className="date">{format(new Date(item.publishedAt), 'MMMM d, yyyy' )}</div>
         </div>
       </CardStyles>
     )
