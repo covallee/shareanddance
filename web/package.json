@@ -11,6 +11,7 @@
     "dotenv": "^7.0.0",
     "gatsby": "^3.0.4",
     "gatsby-cli": "^3.0.0",
+    "gatsby-plugin-fathom": "^2.1.1",
     "gatsby-plugin-image": "^1.0.1",
     "gatsby-plugin-manifest": "^3.0.0",
     "gatsby-plugin-offline": "^4.0.0",
