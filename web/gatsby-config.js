@@ -45,7 +45,6 @@ module.exports = {
         ...clientConfig.sanity,
         token: process.env.SANITY_READ_TOKEN,
         watchMode: !isProd,
-        overlayDrafts: !isProd
       }
     },
     `gatsby-plugin-styled-components`,
