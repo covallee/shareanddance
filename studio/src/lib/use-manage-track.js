@@ -1,7 +1,9 @@
 import { useState, useRef } from 'react'
 import { merge } from 'lodash'
 import { useDocumentOperation } from '@sanity/react-hooks'
-import client from 'part:@sanity/base/client'
+import sanityClient from 'part:@sanity/base/client'
+
+const client = sanityClient.withConfig({apiVersion: '2021-06-07'})
 
 // const ODESLI_API_URL = 'https://api.song.link/v1-alpha.1'
 // import {
@@ -78,7 +80,7 @@ export default function useManageTrack(trackDocumentId) {
 async function fetchPlatformUrls(appleMusicId) {
   const params = new URLSearchParams({ id: appleMusicId })
   const response = await fetch(`/.netlify/functions/odesli/?${params}`)
- 
+  console.log(response.json())
   return response.json()
 }
 

@@ -25,7 +25,7 @@ export default function useSearch(term) {
         name: result.collectionName,
         appleMusicImageUrl: result.artworkUrl100
           .split('/')
-          .slice(0, -2)
+          .slice(0, -1)
           .join('/'),
       },
       duration: result.trackTimeMillis,
