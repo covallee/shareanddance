@@ -9,7 +9,7 @@
     "build-web": "lerna bootstrap && (cd web && npm run build)"
   },
   "devDependencies": {
-    "@sanity/cli": "^2.19.1",
+    "@sanity/cli": "^2.29.3",
     "lerna": "3.22.1"
   }
 }
