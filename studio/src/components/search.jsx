@@ -1,7 +1,5 @@
 import React, { useState } from 'react'
-import { Spinner, Card, Text, Inline, studioTheme, ThemeProvider } from '@sanity/ui'
-import FormField from 'part:@sanity/components/formfields/default'
-import SearchableSelect from 'part:@sanity/components/selects/searchable'
+import { Spinner, Card, Text, Inline, studioTheme, ThemeProvider, Stack, Select } from '@sanity/ui'
 import { useDebounce } from 'use-debounce'
 import useSearch from '../lib/use-search'
 import useManageTrack from '../lib/use-manage-track'
@@ -18,9 +16,9 @@ const Search = ({ trackDocumentId }) => {
 
   return (
     <ThemeProvider theme={studioTheme}>
-    <FormField label='Track' description='Search for a track'>
+    <Stack space={3}>
       <div className={styles.fieldContainer}>
-        <SearchableSelect
+        <Select
           placeholder='Artist, track, or album'
           items={
             results.isValidating && debouncedSearchTerm.length !== 0
@@ -47,7 +45,7 @@ const Search = ({ trackDocumentId }) => {
         )}
         {selectedTrack && <Result track={selectedTrack} />}
       </div>
-    </FormField>
+    </Stack>
     </ThemeProvider>
   )
 }

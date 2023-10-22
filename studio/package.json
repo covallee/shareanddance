@@ -1,13 +1,13 @@
 {
   "name": "shareanddance-studio",
   "private": true,
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "",
   "main": "package.json",
   "author": "Constant V <constantvallee@gmail.com>",
   "license": "UNLICENSED",
   "scripts": {
-    "dev": "sanity start",
+    "dev": "sanity dev",
     "start": "sanity start",
     "test": "sanity check",
     "build": "sanity build",
@@ -17,22 +17,17 @@
     "sanity"
   ],
   "dependencies": {
-    "@sanity/base": "^2.29.3",
-    "@sanity/components": "^2.14.0",
-    "@sanity/core": "^2.29.3",
-    "@sanity/default-layout": "^2.29.3",
-    "@sanity/default-login": "^2.29.3",
-    "@sanity/desk-tool": "^2.29.3",
-    "@sanity/ui": "^0.37.9",
-    "@sanity/vision": "^2.29.3",
+    "@sanity/ui": "^1.8.2",
+    "@sanity/vision": "^3.18.1",
     "got": "11.8.2",
     "lodash": "^4.17.20",
     "prop-types": "^15.7",
-    "react": "^17.0",
-    "react-dom": "^17.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "react-icons": "^3.11.0",
+    "sanity": "^3.18.1",
     "styled-components": "^5.3.5",
-    "swr": "0.3.11",
+    "swr": "2.2.4",
     "use-debounce": "^5.2.0"
   }
 }
