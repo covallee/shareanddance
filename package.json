@@ -1,15 +1,15 @@
 {
   "private": true,
   "name": "shareanddance-blog",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "scripts": {
     "build": "lerna run build --parallel",
     "dev": "lerna run dev --parallel",
-    "build-studio": "lerna bootstrap && cd studio && npm run build",
-    "build-web": "lerna bootstrap && (cd web && npm run build)"
+    "build-studio": "cd studio && npm install && npm run build",
+    "build-web": "npm install && (cd web && npm run build)"
   },
   "devDependencies": {
-    "@sanity/cli": "^2.19.1",
-    "lerna": "3.22.1"
+    "@sanity/cli": "^3.18.1",
+    "lerna": "7.4.1"
   }
 }
