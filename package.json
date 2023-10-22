@@ -5,7 +5,7 @@
   "scripts": {
     "build": "lerna run build --parallel",
     "dev": "lerna run dev --parallel",
-    "build-studio": "npm install && cd studio && npm run build",
+    "build-studio": "cd studio && npm install && npm run build",
     "build-web": "npm install && (cd web && npm run build)"
   },
   "devDependencies": {
