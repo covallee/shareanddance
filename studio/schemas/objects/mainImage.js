@@ -10,9 +10,9 @@ export default {
       name: "caption",
       type: "string",
       title: "Caption",
-      options: {
-        isHighlighted: true,
-      },
+      // options: {
+      //   isHighlighted: true,
+      // },
     },
     {
       name: "alt",
@@ -21,9 +21,9 @@ export default {
       description: "Important for accessibility",
       // validation: (Rule) =>
       //   Rule.error("You have to fill out the alt text").required(),
-      options: {
-        isHighlighted: true,
-      },
+      // options: {
+      //   isHighlighted: true,
+      // },
     },
   ],
   preview: {
@@ -32,4 +32,4 @@ export default {
       title: "caption",
     },
   },
-};
+}

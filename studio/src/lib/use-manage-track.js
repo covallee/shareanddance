@@ -1,9 +1,12 @@
-import { useState, useRef } from 'react'
-import { merge } from 'lodash'
-import { useDocumentOperation } from '@sanity/react-hooks'
-import sanityClient from 'part:@sanity/base/client'
+import { useState, useRef } from "react"
+import { merge } from "lodash"
+import { useClient, useDocumentOperation } from "sanity"
+// import sanityClient from "part:@sanity/base/client"
+// import {useClient} from 'sanity'
 
-const client = sanityClient.withConfig({apiVersion: '2021-06-07'})
+import getAppleMusicImageUrl from "../lib/get-image-url"
+
+// const client = sanityClient.withConfig({ apiVersion: "2021-06-07" })
 
 // const ODESLI_API_URL = 'https://api.song.link/v1-alpha.1'
 // import {
@@ -14,16 +17,18 @@ const client = sanityClient.withConfig({apiVersion: '2021-06-07'})
 //   PlatformTrackData,
 // } from '../types'
 
-import getAppleMusicImageUrl from '../lib/get-image-url'
-
 export default function useManageTrack(trackDocumentId) {
+  const client = useClient({
+    apiVersion: "2022-09-14",
+  })
+
   const [selectedTrack, setSelectedTrack] = useState(null)
   const [isPending, setIsPending] = useState(false)
   const [isSuccess, setIsSuccess] = useState(null)
   const id = useRef(trackDocumentId)
 
   // TODO: Type?
-  const documentOperations = useDocumentOperation(trackDocumentId, 'track')
+  const documentOperations = useDocumentOperation(trackDocumentId, "track")
   const { patch } = documentOperations
 
   async function onSelectTrack(track) {
@@ -31,11 +36,11 @@ export default function useManageTrack(trackDocumentId) {
     setIsPending(true)
     setIsSuccess(null)
     // const [artists, album, dataByPlatform]
-    const [ album, dataByPlatform] = await Promise.all([
+    const [album, dataByPlatform] = await Promise.all([
       // Promise.all(track.artists.map(createArtist)),
       (async () => {
         const albumImage = await createAlbumImage(track.album)
-        return albumImage;
+        return albumImage
         // return createAlbum(track.album, albumImage._id)
       })(),
       fetchPlatformUrls(track.dataByPlatform.appleMusic.id),
@@ -53,9 +58,9 @@ export default function useManageTrack(trackDocumentId) {
             // _ref: album._id,
             name: track.album.name,
             image: {
-              _type: 'image',
+              _type: "image",
               asset: {
-                _type: 'reference',
+                _type: "reference",
                 _ref: album._id,
               },
             },
@@ -80,7 +85,7 @@ export default function useManageTrack(trackDocumentId) {
 async function fetchPlatformUrls(appleMusicId) {
   const params = new URLSearchParams({ id: appleMusicId })
   const response = await fetch(`/.netlify/functions/odesli/?${params}`)
-  
+
   return response.json()
 }
 
@@ -96,11 +101,10 @@ async function maybeCreateTrack(track, trackDocumentId) {
 // TODO: Return type.
 function createTrack(track) {
   return client.create({
-    _type: 'track',
+    _type: "track",
     ...track,
   })
 }
-
 
 // TODO: Return type.
 // function createArtist(artist) {
@@ -130,9 +134,9 @@ function createTrack(track) {
 //TODO: Return type.
 async function createAlbumImage(album) {
   const response = await fetch(
-    getAppleMusicImageUrl(album.appleMusicImageUrl, 1400),
+    getAppleMusicImageUrl(album.appleMusicImageUrl, 1400)
   )
 
   const data = await response.blob()
-  return client.assets.upload('image', new File([data], `${album.name}.jpg`))
+  return client.assets.upload("image", new File([data], `${album.name}.jpg`))
 }

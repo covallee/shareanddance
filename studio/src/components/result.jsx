@@ -1,6 +1,6 @@
 import React from 'react'
-import { Badge } from '@sanity/ui'
-import Label from 'part:@sanity/components/labels/default'
+import { Badge, Label } from '@sanity/ui'
+// import Label from 'part:@sanity/components/labels/default'
 import prettyMs from 'pretty-ms'
 // import { Track } from '../types'
 import styles from './search.css'
