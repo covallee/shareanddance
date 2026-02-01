@@ -1,0 +1,29 @@
+---
+import type { Track } from "../lib/sanity"
+import Card from "./Card.astro"
+
+interface Props {
+  tracks: Track[]
+}
+
+const { tracks } = Astro.props
+---
+
+<div class="cards">
+  {tracks.map((track) => <Card item={track} />)}
+</div>
+
+<style>
+  .cards {
+    display: grid;
+    grid-gap: 20px;
+    margin: 0 auto;
+    justify-content: center;
+  }
+
+  @media (min-width: 700px) {
+    .cards {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

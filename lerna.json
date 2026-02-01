@@ -1,4 +1,4 @@
 {
-  "packages": ["web","studio"],
+  "packages": ["web-astro", "studio"],
   "version": "1.0.0"
 }

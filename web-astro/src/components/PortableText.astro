@@ -1,0 +1,14 @@
+---
+import type { PortableTextBlock } from "@portabletext/react"
+
+interface Props {
+  blocks: PortableTextBlock[]
+}
+
+const { blocks } = Astro.props
+
+// Import the React component for client-side rendering
+import PortableTextRenderer from "./PortableTextRenderer.tsx"
+---
+
+<PortableTextRenderer blocks={blocks} client:load />

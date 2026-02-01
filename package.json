@@ -6,7 +6,7 @@
     "build": "lerna run build --parallel",
     "dev": "lerna run dev --parallel",
     "build-studio": "cd studio && npm install && npm run build",
-    "build-web": "npm install && (cd web && npm run build)"
+    "build-web": "npm install && (cd web-astro && npm run build)"
   },
   "devDependencies": {
     "@sanity/cli": "^3.18.1",
