@@ -1,17 +1,22 @@
 ---
+import { getSiteSettings } from "../lib/sanity"
+
 interface Props {
   title: string
   description?: string
   keywords?: string[]
 }
 
+const siteSettings = await getSiteSettings()
+
 const {
   title,
-  description = "All the music in my life",
+  description = siteSettings.openGraph?.description ||
+    "All the music in my life",
   keywords = ["music", "spotify", "tracks"],
 } = Astro.props
 
-const siteTitle = "Share the Music and Dance"
+const siteTitle = siteSettings.title || "Share the Music and Dance"
 const author = "@shareanddance"
 const fullTitle = `${title} | ${siteTitle}`
 ---

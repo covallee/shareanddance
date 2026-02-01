@@ -3,7 +3,7 @@ import { Badge, Label } from '@sanity/ui'
 // import Label from 'part:@sanity/components/labels/default'
 import prettyMs from 'pretty-ms'
 // import { Track } from '../types'
-import styles from './search.css'
+import styles from './search.module.css'
 
 import getAppleMusicImageUrl from '../lib/get-image-url'
 

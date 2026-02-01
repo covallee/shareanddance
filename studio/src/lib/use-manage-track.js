@@ -86,7 +86,20 @@ async function fetchPlatformUrls(appleMusicId) {
   const params = new URLSearchParams({ id: appleMusicId })
   const response = await fetch(`/.netlify/functions/odesli/?${params}`)
 
-  return response.json()
+  if (!response.ok) {
+    console.error(`Odesli fetch failed: ${response.status} ${response.statusText}`)
+    // Return empty data structure so the track can still be saved
+    return { data: {} }
+  }
+
+  const text = await response.text()
+  try {
+    return JSON.parse(text)
+  } catch (e) {
+    console.error('Failed to parse Odesli response:', text.substring(0, 200))
+    // Return empty data structure so the track can still be saved
+    return { data: {} }
+  }
 }
 
 async function maybeCreateTrack(track, trackDocumentId) {

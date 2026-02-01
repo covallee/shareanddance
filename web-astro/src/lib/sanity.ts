@@ -15,6 +15,17 @@ export function urlFor(source: SanityImageSource) {
   return builder.image(source)
 }
 
+export interface SiteSettings {
+  title: string
+  openGraph?: {
+    title?: string
+    description?: string
+    image?: {
+      asset: SanityImageSource
+    }
+  }
+}
+
 export interface Track {
   _id: string
   name: string
@@ -59,10 +70,28 @@ export async function getTracks(): Promise<Track[]> {
   `)
 }
 
-export async function getSiteSettings() {
-  return {
-    title: "Share the Music and Dance",
-    description: "All the music in my life",
-    author: "@shareanddance",
-  }
+export async function getSiteSettings(): Promise<SiteSettings> {
+  const settings = await sanityClient.fetch(`
+    *[_type == "siteSettings"][0] {
+      title,
+      openGraph {
+        title,
+        description,
+        image {
+          asset
+        }
+      }
+    }
+  `)
+
+  // Fallback to defaults if no settings found
+  return (
+    settings || {
+      title: "Share the Music and Dance",
+      openGraph: {
+        title: "Share the Music and Dance",
+        description: "All the music in my life",
+      },
+    }
+  )
 }
