@@ -1,0 +1,41 @@
+---
+import Layout from "../layouts/Layout.astro"
+import Header from "../components/Header.astro"
+import { getSiteSettings } from "../lib/sanity"
+
+const settings = await getSiteSettings()
+---
+
+<Layout title="404: Not found">
+  <Header siteTitle={settings.title} />
+  <div class="container">
+    <main>
+      <h1>NOT FOUND</h1>
+      <p>You just hit a route that doesn't exist... the sadness.</p>
+    </main>
+  </div>
+  <footer>
+    <div class="footer-content">
+      © {new Date().getFullYear()}, Built with 💜,
+      <a href="https://astro.build">Astro</a>,
+      <a href="https://www.netlify.com/">Netlify</a>, and <a
+        href="https://www.sanity.io">Sanity</a
+      >
+    </div>
+  </footer>
+</Layout>
+
+<style>
+  .container {
+    margin: 0 auto;
+    max-width: 960px;
+    padding: 0 1.0875rem 1.45rem;
+    padding-top: 0;
+  }
+
+  .footer-content {
+    margin: 0 auto;
+    max-width: 960px;
+    padding: 1.45rem 1.0875rem;
+  }
+</style>

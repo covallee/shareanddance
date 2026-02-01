@@ -1,6 +1,6 @@
 // sanity.config.js
 import { defineConfig } from "sanity"
-import { deskTool } from "sanity/desk"
+import { structureTool } from "sanity/structure"
 import schemas from "./schemas/schema"
 import deskStructure from "./src/structure/deskStructure"
 import { visionTool } from "@sanity/vision"
@@ -10,7 +10,7 @@ export default defineConfig({
   projectId: "nayvmi5l",
   dataset: "production",
   plugins: [
-    deskTool({
+    structureTool({
       structure: deskStructure,
     }),
     visionTool(),

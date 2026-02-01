@@ -1,0 +1,121 @@
+---
+import { format } from "date-fns"
+import { urlFor, type Track } from "../lib/sanity"
+import PortableText from "./PortableText.astro"
+
+interface Props {
+  item: Track
+}
+
+const { item } = Astro.props
+
+const spotifyId = item.dataByPlatform?.spotify?.id
+const embedLink = spotifyId
+  ? `https://open.spotify.com/embed/track/${spotifyId}`
+  : null
+
+const imageUrl = item.album?.image?.asset
+  ? urlFor(item.album.image.asset).width(300).height(300).url()
+  : null
+
+const formattedDate = format(new Date(item.publishedAt), "MMMM d, yyyy")
+
+const tags = item.tag || []
+---
+
+<div class="card">
+  {
+    imageUrl && (
+      <img
+        src={imageUrl}
+        alt={`${item.name} by ${item.artist}`}
+        width="300"
+        height="300"
+        loading="lazy"
+      />
+    )
+  }
+  <div class="content">
+    <h2>{item.name} - {item.artist}</h2>
+    <div class="tags">
+      {tags.map((tag) => <span class="tag">{tag.title}</span>)}
+    </div>
+    {item.comment && <PortableText blocks={item.comment} />}
+    <div class="embed">
+      {
+        embedLink && (
+          <iframe
+            title={item.name}
+            src={embedLink}
+            width="100%"
+            height="80"
+            frameborder="0"
+            allowtransparency="true"
+            loading="lazy"
+            allow="encrypted-media"
+          />
+        )
+      }
+    </div>
+    <div class="date">{formattedDate}</div>
+  </div>
+</div>
+
+<style>
+  .card {
+    border: 2px solid #f8b9bf;
+    display: grid;
+    grid-template-columns: 300px;
+  }
+
+  @media (min-width: 700px) {
+    .card {
+      grid-template-columns: 300px 1fr;
+    }
+  }
+
+  .card img {
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    margin-bottom: 0;
+  }
+
+  .card a {
+    display: block;
+    margin-bottom: 1rem;
+    flex-grow: 2;
+  }
+
+  .embed {
+    flex-grow: 2;
+  }
+
+  .card h2 {
+    margin-bottom: 1rem;
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    padding: 20px 20px 0;
+  }
+
+  .date {
+    font-size: 0.7rem;
+  }
+
+  .tags {
+    margin-bottom: 15px;
+  }
+
+  .tag {
+    display: inline;
+    border: 1px solid white;
+    font-weight: 400;
+    border-radius: 5px;
+    background-color: #f294a6;
+    color: #262226;
+    padding: 5px 10px;
+  }
+</style>
