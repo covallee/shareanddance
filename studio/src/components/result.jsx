@@ -1,11 +1,11 @@
-import React from 'react'
-import { Badge, Label } from '@sanity/ui'
+import React from "react"
+import { Badge, Label } from "@sanity/ui"
 // import Label from 'part:@sanity/components/labels/default'
-import prettyMs from 'pretty-ms'
+import prettyMs from "pretty-ms"
 // import { Track } from '../types'
-import styles from './search.module.css'
+import styles from "./search.module.css"
 
-import getAppleMusicImageUrl from '../lib/get-image-url'
+import getAppleMusicImageUrl from "../lib/get-image-url"
 
 // interface Props {
 //   track: Track
@@ -30,7 +30,7 @@ const Result = ({ track }) => (
         <span className={styles.detailsItem}>{track.album.name}</span>
         {track.explicit && (
           <span className={styles.detailsItem}>
-            <Badge mode='outline' tone='caution'>
+            <Badge mode="outline" tone="caution">
               Explicit
             </Badge>
           </span>
