@@ -9,7 +9,7 @@
     "babel-plugin-styled-components": "^1.10.7",
     "date-fns": "^2.19.0",
     "dotenv": "^7.0.0",
-    "gatsby": "^3.0.4",
+    "gatsby": "^3.15.0",
     "gatsby-cli": "^3.0.0",
     "gatsby-plugin-fathom": "^2.1.1",
     "gatsby-plugin-image": "^1.0.1",
